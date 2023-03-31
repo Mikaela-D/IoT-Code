@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <link rel="icon" href="data:,">
+    <style>
+        html {
+            font-family: Amasis MT Pro Medium;
+            display: inline-block;
+            margin: 0px auto;
+            text-align: center;
+            color: black;
+            background-color: rgb(188, 248, 203);
+        }
+
+        .flex-container {
+            display: block;
+            flex-direction: row;
+            align-items: center;
+            flex-direction: column;
+            background-color: aqua;
+        }
+
+        .flex-container>div {
+            background-color: #f1f1f1;
+            width: 800px;
+            margin: 5px;
+            padding: 5px;
+            justify-content: center;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .flex-container{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: aqua;
+            border: 5px solid black;
+            
+            height: auto;
+            padding: 3px;
+            margin: 5px;
+        }
+
+
+
+        p {
+            font-size: 180%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .button {
+            background-color: #ec0909;
+            border: 5px solid black;
+            padding: 3px;
+            color: white;
+            padding: 22px 60px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        table,
+        td,
+        th {
+            border: 2px solid #F20019;
+            text-align: center;
+            padding: 15px;
+        }
+
+        table th {
+            background-color: #fad3a0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #faf287;
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 800px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <title>Health-Tracking Webpage</title>
+    <!-- <meta http-equiv="refresh" content="20"> -->
+</head>
+
+<body>
+    <div id='main'>
+        <h1 style="font-size: 250%;">Health-Tracking Webpage with ESP32 Server</h1>
+        <div class="flex-container img">
+            <p><b><i>Welcome to your Homepage</i></b></p>
+            <a data-flickr-embed="true"
+                href="https://www.flickr.com/photos/197718689@N03/52696081361/in/dateposted-public/"
+                title="Project Image">
+                <div>
+                    <img src="https://live.staticflickr.com/65535/52696081361_533bc99af1_z.jpg" style="width:50%"
+                        alt="Health Tracking Smartwatch LCD Screen Image"> 
+                </div>
+            </a>
+            <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8">
+            </script>
+            <p style="font-size: 120%;">Here are some readings of your Health-Tracking Smartwatch.</p>
+        </div>
+        <div>
+            <h2>Send Location Button</h2>
+            <button class="button" onclick="sendSMS_GPS()">SMS</button>
+        </div>
+    </div>
+</body>
+
+<div class="flex-container">
+    <p>Humidity and Temperature sensor Table DHT11</p>
+    <table class="center">
+        <tr>
+            <th>Humidity</th>
+            <th>Degrees Celcius</th>
+            <th>Degrees Fahrenheit</th>
+        </tr>
+        <td>
+            82 %
+        </td>
+        <td>
+            21.64
+        </td>
+        <td>
+            70.95
+        </td>
+    </table>
+
+    <p>Body Temperature sensor Table DS18B20</p>
+    <table class="center">
+        <tr>
+            <th>Degrees Celcius</th>
+            <th>Degrees Fahrenheit</th>
+        </tr>
+        <td>
+            23
+        </td>
+        <td>
+            73
+        </td>
+    </table>
+
+    <p>Body Temperature sensor Table LM35</p>
+    <table class="center">
+        <tr>
+            <th>Degrees Celsius</th>
+            <th>Degrees Fahrenheit</th>
+        </tr>
+
+        <td>
+            22
+        </td>
+        <td>
+            72
+        </td>
+    </table>
+</div>
+
+<div>
+    <p>Humidity and Temperature Graphs DHT11</p>
+    <br>
+    <iframe width="450" height="260" style="border: 2px solid black;"
+        src="https://thingspeak.com/channels/2018794/charts/1?bgcolor=%23FCFEEE&color=%238109FF&dynamic=true&results=60&title=Humidity&type=line">
+    </iframe>
+    </br>
+    <iframe width="450" height="260" style="border: 2px solid black;"
+        src="https://thingspeak.com/channels/2018794/charts/2?bgcolor=%23FCFEEE&color=%238109FF&dynamic=true&results=60&title=Temperature+in+Celsius&type=line">
+    </iframe>
+    <iframe width="450" height="260" style="border: 2px solid black;"
+        src="https://thingspeak.com/channels/2018794/charts/3?bgcolor=%23FCFEEE&color=%238109FF&dynamic=true&results=60&title=Temperature+in+Fahrenheit&type=line">
+    </iframe>
+</div>
+
+<div>
+    <p>Temperature Graphs DS18B20</p>
+    <iframe width="450" height="260" style="border: 2px solid black;"
+        src="https://thingspeak.com/channels/2062268/charts/1?bgcolor=%23E7E9FF&color=%23018000&dynamic=true&results=60&title=Temperature+in+Celsius&type=line">
+    </iframe>
+    <iframe width="450" height="260" style="border: 2px solid black;"
+        src="https://thingspeak.com/channels/2062268/charts/2?bgcolor=%23E7E9FF&color=%23018000&dynamic=true&results=60&title=Temperature+in+Fahrenheit&type=line">
+    </iframe>
+</div>
+
+</html>
